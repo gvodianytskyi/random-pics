@@ -1,6 +1,7 @@
 .App {
   background: #99e7ff;
   font-family: sans-serif;
+  padding-bottom: 20px;
 }
 
 .header {
@@ -38,4 +39,22 @@
 .pic-list__index {
   text-align: center;
   margin-bottom: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 20px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn_more {
+  background: #005c99;
+  width: 150px;
+  height: 30px;
+  color: #ffffff;
+  display: block;
+  margin: 0 auto;
 }

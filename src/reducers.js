@@ -2,8 +2,10 @@ import { combineReducers } from 'redux';
 
 export const pics = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_PICS':
+        case 'LOAD_PICS':
             return action.pics;
+        case 'APPEND_PICS':
+            return [...state, ...action.pics];
         case 'CLEAR_PICS':
             return [];
         default:

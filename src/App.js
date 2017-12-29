@@ -3,7 +3,7 @@ import './App.css';
 
 import { connect } from 'react-redux';
 
-import { getPics, clearPics } from './actions';
+import { getPics, clearPics, onMoreClick } from './actions';
 
 
 export class App extends Component {
@@ -33,6 +33,8 @@ export class App extends Component {
                       </li>
                   ))}
               </ul>
+
+              <button className="btn btn_more" onClick={this.props.onMoreClick}>More pics</button>
           </div>
         );
     }
@@ -40,7 +42,7 @@ export class App extends Component {
 
 // AppContainer.js
 const mapStateToProps = (state, ownProps) => ({ pics: state.pics });
-const mapDispatchToProps = { getPics, clearPics };
+const mapDispatchToProps = { getPics, clearPics, onMoreClick };
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default AppContainer;
