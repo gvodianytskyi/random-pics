@@ -25,13 +25,13 @@ export const getPics = () => (dispatch) => {
         })
         .catch(error => {
             console.log(error);
-            dispatch(clearPics())
+            dispatch(clearPics());
         });
 };
 
-export const onMoreClick = () => (dispatch) => {
+export const loadMorePics = () => (dispatch) => {
     const newUrl = `${url}&after=${after}`;
-
+    console.log('newUrl: ', newUrl);
     axios(newUrl)
         .then((responseBody) => {
             dispatch(appendPics(responseBody.data.data.children.slice(1)));
@@ -39,6 +39,6 @@ export const onMoreClick = () => (dispatch) => {
         })
         .catch(error => {
             console.log(error);
-            dispatch(clearPics())
+            dispatch(clearPics());
         });
 };

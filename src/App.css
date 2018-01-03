@@ -31,7 +31,11 @@
 .pic-list__img {
   display: block;
   margin: 20px auto;
-  width: 1000px;
+  width: 80%;
+}
+
+.pic-list__author {
+  display: block;
 }
 
 .pic-list__description,

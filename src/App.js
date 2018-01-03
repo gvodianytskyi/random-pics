@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
+import Post from './Post';
 
-import { connect } from 'react-redux';
-
-import { getPics, clearPics, onMoreClick } from './actions';
-
-
-export class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
         this.props.getPics();
+        document.addEventListener('scroll', this.trackScrolling);
     }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.trackScrolling);
+    }
+
+    componentDidUpdate() {
+        document.addEventListener('scroll', this.trackScrolling);
+    }
+
+    trackScrolling = () => {
+        if (document.body.getBoundingClientRect().bottom - window.innerHeight < 5) {
+            this.props.loadMorePics();
+            document.removeEventListener('scroll', this.trackScrolling);
+        }
+    };
 
     render() {
         return (
@@ -22,27 +34,13 @@ export class App extends Component {
               <ul className="pic-list">
                   {this.props.pics.map((pic, index) => (
                       <li className="pic-list__item" key={index}>
-                          <div className="pic-list__index"> #{index + 1}</div>
-                          <figure className="pic-list__figure">
-                              <img className="pic-list__img" src={pic.data.url} />
-                              <figcaption className="pic-list__caption">
-                                  <p className="pic-list__description">&laquo; {pic.data.title} &raquo;</p>
-                                  <div className="pic-list__author">Author: {pic.data.author}</div>
-                              </figcaption>
-                          </figure>
+                          <Post index={index} pic={pic}/>
                       </li>
                   ))}
               </ul>
 
-              <button className="btn btn_more" onClick={this.props.onMoreClick}>More pics</button>
+              <button className="btn btn_more" onClick={this.props.loadMorePics}>More pics</button>
           </div>
         );
     }
 }
-
-// AppContainer.js
-const mapStateToProps = (state, ownProps) => ({ pics: state.pics });
-const mapDispatchToProps = { getPics, clearPics, onMoreClick };
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
-
-export default AppContainer;
