@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://reddit.com/r/pics.json?limit=10';
+const url = 'https://reddit.com/r/pics.json?limit=100';
 let after = null;
 
 export const loadPics = pics => ({
@@ -27,7 +27,7 @@ export const getPics = () => (dispatch) => {
     // })
     axios(url)
         .then((responseBody) => {
-            dispatch(loadPics(responseBody.data.data.children.slice(1)));
+            dispatch(loadPics(responseBody.data.data.children ));
             after = responseBody.data.data.after;
         })
         .catch(error => {
