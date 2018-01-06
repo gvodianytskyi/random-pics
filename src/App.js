@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Post from './Post';
+import ReactLoading from 'react-loading';
 
 export default class App extends Component {
     constructor(props) {
@@ -37,11 +38,15 @@ export default class App extends Component {
                           <Post index={index}
                                 title={pic.data.title}
                                 author={pic.data.author}
-                                url={pic.data.preview.images[0].source.url}
+                                url={pic.data.preview ?
+                                    pic.data.preview.images[0].source.url :
+                                    pic.data.url  }
                           />
                       </li>);
                   })}
               </ul>
+
+              { this.props.loading ? <ReactLoading  type="spin" className="spinner" /> : null}
               <button className="btn btn_more" onClick={this.props.loadMorePics}>More pics</button>
           </div>
         );

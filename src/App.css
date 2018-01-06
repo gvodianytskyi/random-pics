@@ -69,3 +69,9 @@
   display: block;
   margin: 0 auto;
 }
+
+.spinner {
+  position: fixed;
+  bottom: 50%;
+  right: 50%;
+}
