@@ -32,22 +32,24 @@ export default class App extends Component {
         return (
           <div className="App">
               <header className="header">Reddit pics</header>
-              <ul className="pic-list">
-                  {this.props.pics.map((pic, index) => {
-                      return (<li className="pic-list__item" key={index}>
-                          <Post index={index}
-                                title={pic.data.title}
-                                author={pic.data.author}
-                                url={pic.data.preview ?
-                                    pic.data.preview.images[0].source.url :
-                                    pic.data.url  }
-                          />
-                      </li>);
-                  })}
-              </ul>
+              <main className="main">
+                  <ul className="pic-list">
+                      {this.props.pics.map((pic, index) => {
+                          return (<li className="pic-list__item" key={index}>
+                              <Post index={index}
+                                    title={pic.data.title}
+                                    author={pic.data.author}
+                                    url={pic.data.preview ?
+                                        pic.data.preview.images[0].source.url :
+                                        pic.data.url }
+                              />
+                          </li>);
+                      })}
+                  </ul>
 
-              { this.props.loading ? <ReactLoading  type="spin" className="spinner" /> : null}
-              <button className="btn btn_more" onClick={this.props.loadMorePics}>More pics</button>
+                  { this.props.loading ? <ReactLoading  type="spin" className="spinner" /> : null}
+                  <button className="btn btn_more" onClick={this.props.loadMorePics}>More pics</button>
+              </main>
           </div>
         );
     }

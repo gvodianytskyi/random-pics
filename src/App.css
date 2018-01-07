@@ -11,11 +11,19 @@
   font-weight: 700;
 }
 
-.pic-list {
+.main {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.pic-list {
+  /*width: 80%;*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-direction: column;*/
 }
 
 .pic-list__item {
@@ -24,7 +32,6 @@
   border: solid 2px #33cfff;
   border-radius: 20px;
   margin-bottom: 30px;
-  width: 80%;
   padding: 20px;
 }
 
@@ -67,11 +74,11 @@
   height: 30px;
   color: #ffffff;
   display: block;
-  margin: 0 auto;
+  align-self: center;
 }
 
 .spinner {
   position: fixed;
   bottom: 50%;
-  right: 50%;
+  left: 50%;
 }
