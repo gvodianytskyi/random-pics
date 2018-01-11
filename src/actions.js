@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://reddit.com/r/pics.json?limit=100';
+const url = 'https://www.reddit.com/r/pics.json?limit=100';
 let after = null;
 
 export const loadPics = pics => ({
