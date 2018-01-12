@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getPics, clearPics, loadMorePics, showSpinner, hideSpinner } from './actions';
 import './App.css';
 import Post from './Post';
 import ReactLoading from 'react-loading';
 
-export default class App extends Component {
+class App extends Component {
+
     constructor(props) {
         super(props);
     }
@@ -54,3 +57,9 @@ export default class App extends Component {
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => ({ pics: state.pics, loading: state.loading });
+const mapDispatchToProps = { getPics, clearPics, loadMorePics, showSpinner, hideSpinner };
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default AppContainer;
